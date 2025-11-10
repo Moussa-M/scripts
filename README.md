@@ -18,49 +18,42 @@ An intelligent script that uses OpenAI's API to generate conventional commit mes
 
 #### Requirements
 
-- `jq` - JSON processor
-- `curl` - HTTP client
+- `jq` - JSON processor (`sudo apt-get install jq` or `brew install jq`)
+- `curl` - HTTP client (usually pre-installed)
 - `OPENAI_API_KEY` environment variable set
 - Git repository
 
-#### Installation
+#### One-Liner Installation
 
 ```bash
-# Install jq (if not already installed)
-# Ubuntu/Debian:
-sudo apt-get install jq
+# Install and set up aicommit as a git command
+curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/aicommit.sh | sudo tee /usr/local/bin/git-aicommit > /dev/null && sudo chmod +x /usr/local/bin/git-aicommit
 
-# macOS:
-brew install jq
-
-# Set your OpenAI API key
+# Set your OpenAI API key (add to ~/.zshrc or ~/.bashrc for persistence)
 export OPENAI_API_KEY='your-api-key-here'
-
-# Add to your shell profile for persistence
 echo 'export OPENAI_API_KEY="your-api-key-here"' >> ~/.zshrc  # or ~/.bashrc
 ```
 
 #### Usage
 
-```bash
-# Make the script executable
-chmod +x aicommit.sh
+After installation, use it directly as a git command:
 
+```bash
 # Basic usage (commits and pushes by default)
-./aicommit.sh
+git aicommit
 
 # Commit only, don't push
-./aicommit.sh --no-push
+git aicommit --no-push
 # or
-./aicommit.sh -n
+git aicommit -n
 
 # Non-interactive mode (auto-accept generated message)
-./aicommit.sh --yes
+git aicommit -y
 # or
-./aicommit.sh -y
+git aicommit --yes
 
 # Show help
-./aicommit.sh --help
+git aicommit --help
 ```
 
 #### How It Works
@@ -92,8 +85,8 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 # Stage some changes
 git add file1.py file2.js
 
-# Generate and commit with AI
-./aicommit.sh
+# Generate and commit with AI (non-interactive)
+git aicommit -y
 
 # Output example:
 # AI‑generated commit message:
@@ -130,7 +123,7 @@ Installs a clean and colorful Zsh theme for Oh My Zsh with customizable prompt e
 #### Quick Install
 
 ```bash
-curl -fsSL https://moussa-m.github.io/install-raspi-theme.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/install-raspi-theme.sh | bash
 ```
 
 #### Custom Format
@@ -176,30 +169,24 @@ source ~/.zshrc
 
 ---
 
-## Installation
+## Quick Installation
 
-### Clone the Repository
+### aicommit.sh
 
 ```bash
-git clone https://github.com/Moussa-M/scripts.git
-cd scripts
+# One-liner install as git command
+curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/aicommit.sh | sudo tee /usr/local/bin/git-aicommit > /dev/null && sudo chmod +x /usr/local/bin/git-aicommit
+
+# Set OpenAI API key
+export OPENAI_API_KEY='your-api-key-here'
+echo 'export OPENAI_API_KEY="your-api-key-here"' >> ~/.zshrc  # or ~/.bashrc
 ```
 
-### Make Scripts Executable
+### install-raspi-theme.sh
 
 ```bash
-chmod +x *.sh
-```
-
-### Add to PATH (Optional)
-
-```bash
-# Add to your shell profile (~/.zshrc or ~/.bashrc)
-export PATH="$PATH:/path/to/scripts"
-
-# Or create symlinks
-sudo ln -s /path/to/scripts/aicommit.sh /usr/local/bin/aicommit
-sudo ln -s /path/to/scripts/install-raspi-theme.sh /usr/local/bin/install-raspi-theme
+# One-liner install (already available)
+curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/install-raspi-theme.sh | bash
 ```
 
 ## GitHub Pages

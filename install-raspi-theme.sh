@@ -8,11 +8,11 @@
 #     # apt install zsh
 #     # apt install git
 #     # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#     curl -fsSL https://moussa-m.github.io/install-raspi-theme.sh | bash
+#     curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/install-raspi-theme.sh | bash
 #
 #   Custom format:
-#     curl -fsSL https://moussa-m.github.io/install-raspi-theme.sh | bash -s -- -f "u@h d"
-#     curl -fsSL https://moussa-m.github.io/install-raspi-theme.sh | bash -s -- -ex i
+#     curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/install-raspi-theme.sh | bash -s -- -f "u@h d"
+#     curl -fsSL https://raw.githubusercontent.com/Moussa-M/scripts/main/install-raspi-theme.sh | bash -s -- -ex i
 #     ./install-raspi-theme.sh -f "u@h [i:p] d" -ex cv
 #
 # Prompt format:  u@h [i:p] d (c) (v) (g)

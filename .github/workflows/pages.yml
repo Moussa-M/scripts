@@ -39,11 +39,14 @@ jobs:
 
       - name: Convert README to HTML
         run: |
+          # Create output directory
+          mkdir -p _site
+          
           # Convert markdown to HTML
           marked README.md > content.html
           
-          # Create final HTML with styling
-          cat > index.html << 'HTML_EOF'
+          # Create HTML header
+          cat > _site/index.html << 'HEADER_EOF'
           <!DOCTYPE html>
           <html lang="en">
           <head>
@@ -147,14 +150,20 @@ jobs:
           </head>
           <body>
             <div class="container">
-              $(cat content.html)
+          HEADER_EOF
+          
+          # Append markdown content
+          cat content.html >> _site/index.html
+          
+          # Append footer
+          cat >> _site/index.html << 'FOOTER_EOF'
               <div class="footer">
                 <p>Generated from <a href="https://github.com/Moussa-M/scripts">GitHub Repository</a></p>
               </div>
             </div>
           </body>
           </html>
-          HTML_EOF
+          FOOTER_EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
